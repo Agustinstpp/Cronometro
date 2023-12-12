@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cronómetro</title>
+</head>
+<body>
+  <h1>Cronómetro</h1>
+  <div id="contador">
+    <div id="horas"></div>
+    <div id="minutos"></div>
+    <div id="segundos"></div>
+  </div>
+  <button id="boton">Finalizar</button>
+
+  <script>
+    // Obtener la fecha actual
+    const fechaActual = new Date();
+    const diaActual = fechaActual.getDate();
+    const mesActual = fechaActual.getMonth() + 1;
+    const anioActual = fechaActual.getFullYear();
+
+    // Obtener la fecha de finalización
+    const fechaFin = new Date(anioActual, mesActual, diaActual + 1);
+
+    // Inicializar el contador
+    let horas = fechaFin.getHours();
+    let minutos = fechaFin.getMinutes();
+    let segundos = fechaFin.getSeconds();
+
+    // Actualizar el contador cada segundo
+    setInterval(() => {
+      // Si el contador ha terminado
+      if (horas === 0 && minutos === 0 && segundos === 0) {
+        // Mostrar el botón
+        $("#boton").css("display", "block");
+      } else {
+        // Actualizar las horas
+        if (horas > 0) {
+          horas--;
+        } else {
+          // Actualizar los minutos
+          if (minutos > 0) {
+            minutos--;
+          } else {
+            // Actualizar los segundos
+            segundos--;
+          }
+
+          if (segundos < 0) {
+            segundos = 59;
+          }
+        }
+
+        // Actualizar el contador
+        $("#horas").html(horas);
+        $("#minutos").html(minutos);
+        $("#segundos").html(segundos);
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+#contador {
+  width: 200px;
+  margin: 0 auto;
+}
+
+#horas,
+#minutos,
+#segundos {
+  font-size: 20px;
+}
+
+#boton {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+}
